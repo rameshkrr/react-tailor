@@ -1,0 +1,42 @@
+state={ 
+        data:[]
+    }
+
+    fetchData = async() => {
+
+        //response
+        const response = await
+        fetch('https://dreamdesign.rkhomeappliances.co.in/wp-json/wc/v2/products?per_page=100&consumer_key=***&consumer_secret=***');
+        //posts
+        const posts = await response.json();
+        this.setState({data:posts});
+    }
+
+    getCart() {
+        return (dispatch) => {
+            dispatch({
+                type: types.GET_CART_SUCCESS
+            });
+        }
+    }
+    
+    componentDidMount(){
+        this.getCart();
+	}
+	_keyExtractor = (item, index) => item.id;
+	static navigationOptions ={
+		drawerIcon:(
+				<FontAwesome name="home" size={30} color="black" />
+			)
+	}
+    render() {
+        const { cart } = this.props;
+        
+		const Items =<View>
+		<FlatList numColumns={2}
+data={cart}
+keyExtractor={this._keyExtractor}
+renderItem = {({item})=>
+<Text style={{color:'#000'}}>hello</Text>	 
+} />
+</View>	
