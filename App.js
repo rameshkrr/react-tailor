@@ -9,13 +9,14 @@ import HomePage from './src/Screens/HomePage'
 import Products from './src/Screens/Products'
 import Category from './src/Screens/Category'
 import Checkout from './src/Screens/Checkout'
+import Success from './src/Screens/Success'
 import Cart from './src/Screens/Cart'
 import InitialState from './src/reducers/InitialState';
 import DrawerContainer from './src/Screens/DrawerContainer';
 import configureStore from './src/store/configureStore';
 
 const DrawerNavigation = createDrawerNavigator({
-  Home: {
+  HomePage: {
     screen: HomePage,
     navigationOptions: {
       title: "Dream Designs"
@@ -44,10 +45,16 @@ const DrawerNavigation = createDrawerNavigator({
     navigationOptions: {
       title: "Cart"
     }
-  }
+  },
+  Success: {
+    screen: Success,
+    navigationOptions: {
+      title: "Success"
+    }
+  },
 }, {
     contentComponent: DrawerContainer,
-    initialRouteName:'Home',
+    initialRouteName:'Checkout',
     drawerOpenRoute: 'DrawerOpen',
     drawerClassRoute: 'DrawerClose',
     draweToggleRoute: 'DrawerToggle'
@@ -82,7 +89,7 @@ const drawerButton = (navigation) => (
 
 const cartButton = (navigation, screenProps) => (
   <Text style={{ padding: 15, color: 'white' }}
-    onPress={() => { navigation.navigate('CartPage') }}
+    onPress={() => { navigation.navigate('Cart') }}
   >
     <EvilIcons name="cart" size={30} />
     {screenProps.cartCount}

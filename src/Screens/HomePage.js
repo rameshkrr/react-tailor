@@ -22,7 +22,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome'
 import Swiper from 'react-native-swiper'
 //import * as ProductAction from '../actions/ProductActions';
 
-
+//https://dreamdesign.rkhomeappliances.co.in/wp-json/wc/v2/orders?&consumer_key=ck_fab24b83126c02ccdf3ffa5e39b45e92ea984d74&consumer_secret=cs_5cf3ca533a10e52f781250b06e821d909819fbb1
 
 class HomePage extends Component {
 	state={ 
@@ -30,7 +30,7 @@ class HomePage extends Component {
     }
 
     fetchData = async() => {
-
+		
         //response
         const response = await
         fetch('https://dreamdesign.rkhomeappliances.co.in/wp-json/wc/v2/products?per_page=100&consumer_key=ck_45a5668a0951cde83a24b1bedb9741604174a40b&consumer_secret=cs_c0e5f6818a54eecaf2bef01c0516821550497be9');

@@ -1,0 +1,104 @@
+import React, { Component } from "react";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Platform,
+    StatusBar,
+	Image,
+	TouchableHighlight, ToolbarAndroid,
+	FlatList,
+    ScrollView,
+    Alert,
+    TextInput
+    
+} from "react-native";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { StackNavigator } from "react-navigation";
+import {Icon, Button, Container, Header, Content,Left ,Right,Item,Input,Card,CardItem} from 'native-base'
+import { Ionicons,FontAwesome } from '@expo/vector-icons'
+import FAIcon from 'react-native-vector-icons/FontAwesome'
+//import * as ProductAction from '../actions/ProductActions';
+
+class Checkout extends Component {
+    
+    constructor(props) {
+        super(props);
+       data = this.state = {
+            
+                "payment_method": "",
+                "payment_method_title": "Cash on delivery",
+                "billing": {
+                    "first_name": "",
+                    "last_name": "Kr",
+                }    
+        }
+    }
+
+    postOrder = () => {
+        url = "https://dreamdesign.rkhomeappliances.co.in/wp-json/wc/v2/orders?&consumer_key=ck_fab24b83126c02ccdf3ffa5e39b45e92ea984d74&consumer_secret=cs_5cf3ca533a10e52f781250b06e821d909819fbb1";
+        fetch(url, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+  body: JSON.stringify(data),
+});
+    }
+    setFirstName = (first_name) => {
+        
+        this.setState({
+          billing: {
+            ...this.state.billing,
+            first_name  
+          }
+        });
+      };
+    
+    render() {
+        const { navigate } = this.props.navigation;
+        
+        return (
+			
+           
+			<View style={styles.container}>
+                
+        <Text>Checkout Page</Text>
+        <TextInput
+          style={styles.textInputStyle}
+          placeholder="Enter Name"
+          value={this.state.billing.first_name}
+          onChange={this.setFirstName}
+        />
+        <TouchableOpacity style={{backgroundColor:'#000',height:50}} onPress={this.postOrder}>
+            <Text style={{color: '#fff'}}> Pors Order </Text>
+        </TouchableOpacity>
+           
+       
+</View>
+
+			
+        );
+    }
+    }
+    
+export default Checkout;
+const styles = StyleSheet.create({
+    container: {
+      justifyContent: 'center',
+      marginTop: 50,
+      padding: 20,
+      backgroundColor: '#ffffff',
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#4C3E54',
+        paddingTop:20,
+        width: '100%',
+        height: 50,
+        marginTop:10,    
+    },
+  });
