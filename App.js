@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { createDrawerNavigator ,NavigationActions,DrawerItems,createStackNavigator} from 'react-navigation'
+import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
 import { Ionicons, EvilIcons } from '@expo/vector-icons';
 import {Icon, Button, Container, Header, Content,Left, Body } from 'native-base';
 import HomePage from './src/Screens/HomePage'
+import HomeUp from './src/Screens/HomeUp'
 import Products from './src/Screens/Products'
 import Category from './src/Screens/Category'
 import Checkout from './src/Screens/Checkout'
@@ -15,9 +16,9 @@ import InitialState from './src/reducers/InitialState';
 import DrawerContainer from './src/Screens/DrawerContainer';
 import configureStore from './src/store/configureStore';
 
-const DrawerNavigation = createDrawerNavigator({
-  HomePage: {
-    screen: HomePage,
+const DrawerNavigation = DrawerNavigator({
+   HomeUp: {
+    screen: HomeUp,
     navigationOptions: {
       title: "Dream Designs"
     }
@@ -46,26 +47,19 @@ const DrawerNavigation = createDrawerNavigator({
       title: "Cart"
     }
   },
-  Success: {
-    screen: Success,
-    navigationOptions: {
-      title: "Success"
-    }
-  },
+ 
 }, {
     contentComponent: DrawerContainer,
-    initialRouteName:'Checkout',
-    drawerOpenRoute: 'DrawerOpen',
-    drawerClassRoute: 'DrawerClose',
-    draweToggleRoute: 'DrawerToggle'
+    initialRouteName:'HomeUp',
+    
     
   });
 
 
-const StackNavigation = createStackNavigator({
+const StackNavigation = StackNavigator({
   DrawerNavigation: { screen: DrawerNavigation }
 }, {
-    
+  headerMode: 'float',
     navigationOptions: ({ navigation, screenProps }) => ({
       headerStyle: { backgroundColor: '#4C3E54' },
       headerTintColor: 'white',
@@ -119,6 +113,8 @@ const store = configureStore();
 
 class App extends React.Component {
   render() {
+    console.disableYellowBox = true;
+
     return (
       <Provider store={store}>
         <ConnectedApp />

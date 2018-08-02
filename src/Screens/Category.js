@@ -75,9 +75,9 @@ class Category extends Component {
           <Text style={styles.text}>{item.name}</Text>
 		  <View style={styles.borderNow}></View>
 		  <View style={styles.cartPrice}>
-			  <Text style={styles.addCart}>Add To Cart</Text>
+			  <Text style={styles.addCart}>₹{item.price}</Text>
 			  <Text style={styles.price}>
-			  ₹{item.price}
+			  
 			  </Text> 
 			  </View>
         </View>
@@ -113,9 +113,12 @@ const styles = StyleSheet.create({
 
 	  },
 	  image: {
-		flex:1,
-		height:200,
-		width: '100%',
+		flex: 1,
+    alignSelf: 'stretch',
+    width: undefined,
+    height: undefined,
+    resizeMode:'contain',
+    justifyContent:'center',
 		backgroundColor:'#fff',
 		paddingTop:220,
 	  },
@@ -124,7 +127,7 @@ const styles = StyleSheet.create({
 		width:165
 	  },
 	  addCart:{
-		  paddingLeft:10,
+		  textAlign:'center',
 		  fontSize:14,
 		  fontSize:18,
 		  paddingBottom:20

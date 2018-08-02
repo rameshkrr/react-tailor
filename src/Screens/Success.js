@@ -1,29 +1,71 @@
 import React, { Component } from "react";
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 import {
-  AppRegistry,
-  StyleSheet,
-  Image,
-  View,
-  TextInput
-} from 'react-native';
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Platform,
+    StatusBar,
+	Image,
+	TouchableHighlight,
+    ToolbarAndroid,
+	FlatList,
+	ScrollView,
+	AsyncStorage
+    
+} from "react-native";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { StackNavigator } from "react-navigation";
+import {Icon, Button, Container, Header, Content,Left ,Right,Item,Input,Card,CardItem} from 'native-base'
+import { Ionicons,FontAwesome,Entypo } from '@expo/vector-icons'
+
+import FAIcon from 'react-native-vector-icons/FontAwesome'
+import Swiper from 'react-native-swiper'
+import * as CartAction from '../actions/CartActions';
 
 class Success extends Component {
-  render() {
+	
+    render() {
     return (
-      <View style={[{flex: 1}]}>
-        {/* Some random image to show scaling */}
-        <Image source={{uri: 'http://img11.deviantart.net/072b/i/2011/206/7/0/the_ocean_cherry_tree_by_tomcadogan-d41nzsz.png', static: true}}
-                 style={{flex: 1}}/>
-
-        {/* The text input to put on top of the keyboard */}
-        <TextInput style={{left: 0, right: 0, height: 45}}
-              placeholder={'Enter your text!'}/>
-
-        {/* The view that will animate to match the keyboards height */}
-        <KeyboardSpacer/>
+      <View style={styles.wrapper}>
+       <Text style={{textAlign:'center'}}>Product ordered Successfully</Text>
       </View>
     );
   }
 }
+ 
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1
+  },
+  container: {
+    flex: .5,
+    flexDirection: 'row',
+    justifyContent: 'flex-start', //replace with flex-end or center
+    borderBottomWidth: 1,
+    borderBottomColor: '#000'
+  },
+  container2: {
+    flex: .5,
+    flexDirection: 'row',
+    alignItems: 'flex-start' //replace with flex-end or center
+  },
+  box: {
+    width: 100,
+    height: 100
+  },
+  box1: {
+    backgroundColor: '#2196F3'
+  },
+  box2: {
+    backgroundColor: '#8BC34A'
+  },
+  box3: {
+    backgroundColor: '#e3aa1a'
+  }
+});
+
+
+
 export default Success;

@@ -13,8 +13,9 @@ export default class DrawerContainer extends React.Component {
           source={require('../../logo2.png')}/>
       <Content>
       <View>
+        
         <Text
-          onPress={() => navigation.navigate('HomePage')}
+          onPress={() => navigation.navigate('HomeUp')}
           style={styles.transparentButton}>
           Home
         </Text>
@@ -33,11 +34,7 @@ export default class DrawerContainer extends React.Component {
           style={styles.transparentButton}>
           Checkout
         </Text>
-        <Text
-          onPress={() => navigation.navigate('Success')}
-          style={styles.transparentButton}>
-          Success
-        </Text>
+        
         
       </View>
       </Content>

@@ -76,6 +76,7 @@ class Cart extends Component {
       return (
         <View style={styles.container}>
 		  {Items}
+
 		  <TouchableOpacity style={styles.button} underlayColor="#1f1f1f" onPress={() => navigate("Checkout")} >
                         <Text style={{ color: '#fff' }}> CHECKOUT </Text>
                     </TouchableOpacity>
@@ -101,7 +102,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 150,
-    height: 200
+    height: 200,
+    resizeMode:'contain',
+    justifyContent:'center',
   },
   container: {
     flex: 1,

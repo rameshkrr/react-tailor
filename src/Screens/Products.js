@@ -47,14 +47,16 @@ class Products extends React.Component {
     }
     render() {
         const product = this.props.navigation.state.params.product;
+        const regex = /(<([^>]+)>)/ig;
         return (
-           <Container>
+           <Container style={styles.maincontent}>
             <ScrollView>
             <Image style={styles.image} source={{ uri: product.images[0].src }} />
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             
-            <Text style={{fontSize:18,fontWeight:'bold'}}>{product.name}</Text>
-            <Text> ₹ {product.price}</Text>
+            <Text style={{fontSize:18,fontWeight:'bold',marginTop:10}}>{product.name}</Text>
+            <Text style={{textAlign:'center',fontSize:18,marginTop:10}}> ₹ {product.price}</Text>
+            <Text style={styles.desc}>{product.short_description.replace(regex, '')}</Text>
           </View>
           <View style={{ display: 'flex', flexDirection: 'row', padding: 10, marginLeft: 20, marginBottom: 20 }}>
                     <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center',marginTop:10 }}>
@@ -83,10 +85,28 @@ class Products extends React.Component {
     }
 }
 const styles = StyleSheet.create({
+    maincontent:{
+        width: 350,
+        
+    },
     image: {
-        width: 360,
-        height: 360,
-        marginTop:10
+       
+        flex: 1,
+        alignSelf: 'stretch',
+        width: undefined,
+        height:250,
+        resizeMode:'contain',
+        justifyContent:'center',
+        marginTop:10,
+    },
+    desc:{
+        fontSize:16,
+        paddingLeft:10,
+        paddingRight:10,
+        marginTop:15,
+        marginBottom:10,
+        textAlign:'left',
+        lineHeight:23
     },
     text: {
         fontSize: 20,
